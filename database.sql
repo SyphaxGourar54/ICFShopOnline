@@ -261,3 +261,24 @@ add constraint basket_fk
 foreign key(code_bask)
 references basket(code_bask); 
 
+
+
+-- table of favorit items
+create table favorits(
+code_prdt int not null, 
+code_clt int not null, 
+dateofadd date, 
+constraint pk_fav primary key(code_prdt, code_clt) 
+); 
+
+alter table favorits 
+add constraint prdtfav_fk
+foreign key(code_prdt)
+references product(code_prdt);
+
+alter table favorits 
+add constraint clttfav_fk
+foreign key(code_clt)
+references client(code_clt);
+
+
